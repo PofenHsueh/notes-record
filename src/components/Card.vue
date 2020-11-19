@@ -1,11 +1,11 @@
 <template>
-<div style="margin:0px 32px;">
-  <div class="note">
-    <h5>{{ title }}</h5>
-    <hr />
-    <p>{{ date }}</p>
+  <div style="margin:0px 32px;">
+    <div class="note">
+      <h5>{{ title }}</h5>
+      <hr />
+      <p>{{ date }}</p>
+    </div>
   </div>
-</div>
 </template>
 <script>
 export default {

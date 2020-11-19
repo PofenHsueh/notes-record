@@ -1,0 +1,11 @@
+$sizes: (
+  "16": 16px,
+  "18": 18px,
+  "22": 22px,
+);
+@each $key, $value in $sizes {
+  .font-#{ $key } {
+    font-size: $value;
+    font-weight: 300;
+  }
+}
