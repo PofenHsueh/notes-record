@@ -1,22 +1,22 @@
 <template>
-  <div style="display:flex;height: 100vh;">
+  <div class='continer'>
     <div class="sideBar">
-      <h3>FreeNote.</h3>
+      <p>FreeNote.</p>
       <b-button class="sideBar--btn">
         <b-icon icon="plus-circle-fill"> </b-icon>
-        <h5>{{ $t("createNotes") }}</h5>
+        <p>{{ $t("createNotes") }}</p>
       </b-button>
       <b-nav vertical>
         <b-nav-item v-for="(item, index) in items" :key="index">
           <b-icon :icon="item.icon"></b-icon>
-          <p>{{ $t(item.text) }}</p>
+          <p style="font-size:16px;">{{ $t(item.text) }}</p>
         </b-nav-item>
       </b-nav>
       <b-col class="sideBar--status">
         <div class="mode">
-          <h5>
+          <p>
             {{ $t("mode") }}
-          </h5>
+          </p>
           <b-button
             v-for="(avator, index) in mode"
             :key="index"
@@ -261,29 +261,37 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.continer{
+  display:flex;
+  max-height:100vh;
+}
 //最左邊side menu
 .sideBar {
-  width: 24%;
   position: relative;
-  padding: 54px 72px 0px 72px;
+  width: 24%;
+  padding: 48px 72px 0px 72px;
   background-color: #2f419b;
   color: white;
-  // height: 100vh;
+  p{
+    font-size: 22px;
+  }
   &--btn {
     width: 100%;
     height: 48px;
-    margin: 35px 0px;
+    margin: 10px 0px;
     background-color: white;
     color: #2f419b;
     border-radius: 5px;
-    h5 {
+    p {
+      font-size: 18px;
       display: inline;
       margin: 0px 0px 0px 20px;
     }
   }
   &--status {
     position: absolute;
-    bottom: 12vh;
+    bottom: 0px;
+    margin:30px 0px
   }
 }
 //menu選項
@@ -294,15 +302,16 @@ export default {
   }
   &-link {
     color: white;
-    margin: 5px 10px;
+    margin: 12px 20px;
+    padding: 0px;
   }
 }
 .mode {
-  padding: 30px 0;
+  padding: 20px 0;
   .btn {
     border-radius: 50%;
   }
-  h5 {
+  p {
     display: inline;
   }
 }
@@ -316,7 +325,7 @@ export default {
 .middle {
   display: flex;
   flex-direction: column;
-  padding: 0px 32px;
+  // padding: 0px 32px;
   width: 26%;
   background-color: #f4f6f7;
   border: 1px solid darken(#f4f6f7, 10%);
