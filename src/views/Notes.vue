@@ -74,12 +74,13 @@
         </b-button>
       </b-button-group>
       <hr />
-      <h4 :contenteditable="isedit" @blur="changeContent" class="limit">
+      <h4 :contenteditable="isedit" @blur="changeContent">
         {{ isedit ? cardTitle : "無標題" }}
       </h4>
       <button class="createBtn">
         <p>Add +</p>
       </button>
+
       <div style="height:46vh">
         <h5>{{ $t("writeContent") }}</h5>
       </div>
@@ -144,9 +145,6 @@ export default {
     changeContent(e) {
       this.cardTitle = e.target.innerText;
       this.$set(this.allMount, this.cardIndex, { title: e.target.innerText });
-    },
-    clear() {
-      this.cardTitle = "";
     }
   }
 };
@@ -266,7 +264,7 @@ export default {
 }
 //新增內容
 .createBtn {
-  margin: 15px 0px 40px 0px;
+  margin: 15px 0px 20px 0px;
   background-color: white;
   border: 1px dashed #a3a3a3;
   p {

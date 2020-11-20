@@ -3,6 +3,7 @@
     <div class="note--shape">
       <h5>{{ title }}</h5>
       <hr />
+      <h6>this is content</h6>
       <p>{{ date }}</p>
     </div>
   </div>
@@ -27,7 +28,6 @@ export default {
   &--shape {
     margin: 10px 0px;
     position: relative;
-    // width: 100%;
     height: 255px;
     padding: 35px 25px;
     background: linear-gradient(-150deg, transparent 1.5em, white 0);
