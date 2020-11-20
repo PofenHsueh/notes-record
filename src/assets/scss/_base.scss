@@ -9,3 +9,17 @@ $sizes: (
     font-weight: 300;
   }
 }
+//編輯框外框
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+.limit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  font-weight: 500;
+
+  white-space: pre;
+}

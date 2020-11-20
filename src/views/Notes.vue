@@ -62,6 +62,7 @@
           :title="mount.title"
           v-for="(mount, index) in allMount"
           :key="index"
+          @click="handlerCard(mount.title, index)"
         ></Card>
       </div>
     </div>
@@ -73,11 +74,13 @@
         </b-button>
       </b-button-group>
       <hr />
-      <h4>{{ $t("untitled") }}</h4>
+      <h4 :contenteditable="isedit" @blur="changeContent" class="limit">
+        {{ isedit ? cardTitle : "無標題" }}
+      </h4>
       <button class="createBtn">
         <p>Add +</p>
       </button>
-      <div style="height:46%;width:100%;">
+      <div style="height:46vh">
         <h5>{{ $t("writeContent") }}</h5>
       </div>
       <div class="loadFiles">
@@ -101,9 +104,9 @@ export default {
       mode: [require("@/assets/sunny.png"), require("@/assets/nights.png")],
       allMount: [
         { title: "無標題" },
-        { title: "ew" },
-        { title: "dss" },
-        { title: "dss" }
+        { title: "Note" },
+        { title: "Note2" },
+        { title: "Note3" }
       ],
       items: [
         { icon: "file-earmark-text", text: "allNotes" },
@@ -126,15 +129,32 @@ export default {
         "card-image",
         "paperclip",
         "link"
-      ]
+      ],
+      isedit: false,
+      cardIndex: "",
+      cardTitle: ""
     };
+  },
+  methods: {
+    handlerCard(title, index) {
+      this.isedit = true;
+      this.cardTitle = title;
+      this.cardIndex = index;
+    },
+    changeContent(e) {
+      this.cardTitle = e.target.innerText;
+      this.$set(this.allMount, this.cardIndex, { title: e.target.innerText });
+    },
+    clear() {
+      this.cardTitle = "";
+    }
   }
 };
 </script>
 <style lang="scss" scoped>
 .continer {
   display: flex;
-  max-height: 100vh;
+  height: 100vh;
 }
 //最左邊side menu
 .sideBar {
@@ -228,7 +248,7 @@ export default {
 //右邊編寫內容content
 //上面選項
 .compile {
-  flex: 1 1 auto;
+  width: 50%;
   margin: 48px 40px;
   h4 {
     color: #a3a3a3;
@@ -255,7 +275,7 @@ export default {
   }
 }
 .loadFiles {
-  display: inline-flex;
+  display: flex;
   border: 1px dashed #a3a3a3;
   align-items: center;
   padding: 20px;
@@ -263,7 +283,6 @@ export default {
   a,
   p {
     margin: 0px 0px 0px 10px;
-    display: flex;
   }
   .plus {
     margin-left: auto;
