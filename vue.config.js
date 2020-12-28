@@ -6,7 +6,7 @@ module.exports = {
       }
     }
   },
-  publicPath: process.env.NODE_ENV === "production" ? "/notes-record/" : "/",
+  // publicPath: process.env.NODE_ENV === "production" ? "/notes-record/" : "/",
   configureWebpack: {
     performance: {
       hints: false,
